@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: djando-db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: django-user
+      POSTGRES_PASSWORD: p@ssW0rD
+      POSTGRES_DB: django
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "pgdata:/var/lib/postgresql/data/pgdata"
+
+volumes:
+  pgdata:
