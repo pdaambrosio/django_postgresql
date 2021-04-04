@@ -37,7 +37,7 @@ class Position(Base):
         verbose_name_plural = 'Positions'
 
     def __str__(self):
-        return self.cargo
+        return self.position
 
 class Team(Base):
     name = models.CharField('Name', max_length=100)
