@@ -53,4 +53,4 @@ class Team(Base):
         verbose_name_plural = 'Teams'
 
     def __str__(self):
-        return self.nome
+        return self.name
