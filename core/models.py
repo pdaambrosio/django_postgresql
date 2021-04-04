@@ -1,5 +1,11 @@
+import uuid
 from django.db import models
 from stdimage.models import StdImageField
+
+def get_file_path(_instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}.{ext}'
+    return filename
 
 class Base(models.Model):
     create = models.DateField('Created', auto_now_add=True)
@@ -43,7 +49,7 @@ class Team(Base):
     name = models.CharField('Name', max_length=100)
     position = models.ForeignKey('core.Position', verbose_name='Position', on_delete=models.CASCADE)
     bio = models.TextField('Bio', max_length=200)
-    image = StdImageField('Image', upload_to='team', variations={'thumb':{'width': 480, 'height': 480, 'crop': True}})
+    image = StdImageField('Image', upload_to=get_file_path, variations={'thumb':{'width': 480, 'height': 480, 'crop': True}})
     facebook = models.CharField('Facebook', max_length=100, default='#')
     twitter = models.CharField('Twitter', max_length=100, default='#')
     instagram = models.CharField('Instagram', max_length=100, default='#')
