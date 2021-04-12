@@ -16,10 +16,10 @@ class ContactForm(forms.Form):
         contents = f'Name: {name}\nE-mail: {email}\nSubject: {subject}\nMessage {message}'
 
         mail = EmailMessage(
-            subject=subject
-            body=contents
-            from_email=email
-            to=admin@website.com
-            headers=('Reply-To': email)
+            subject=subject,
+            body=contents,
+            from_email=email,
+            to=['admin@website.com',],
+            headers={'Reply-To': email}
         )
         mail.send()
