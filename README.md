@@ -7,8 +7,8 @@ It is necessary to have docker and docker-compose installed to run the "postgres
 
 More information about installing both is at the links below.:
 
-[Docker](https://docs.docker.com/engine/install/ubuntu/)
-[Docker Compose](https://docs.docker.com/compose/install/)
+* [Docker](https://docs.docker.com/engine/install/ubuntu/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Requirements
 
