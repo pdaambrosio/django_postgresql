@@ -12,7 +12,7 @@ More information about installing both is at the links below.:
 
 ## Requirements
 
-* Docker, Docker Compose and Django for local deployment
+* Docker, Docker Compose, Python 3.9, Python-pip and Django for local deployment
 * Create an account at [heroku.com](https://www.heroku.com/)
 * install Heroku CLI
 
@@ -41,3 +41,50 @@ heroku run python manage.py createsuperuser
 ```
 
 ## Local Deployment
+
+To perform the local deployment, go to the 'django_postgres/settings.py' file and edit as below...
+
+Comment these lines:
+
+```python
+DATABASES = {
+    'default': dj_database_url.config()
+}
+```
+
+Uncomment these lines (remove lines 66 and 77):
+
+```python
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django',
+        'USER':'django-user',
+        'PASSWORD':'p@ssW0rD',
+        'HOST':'localhost',
+        'PORT': '5432',
+   }
+}
+"""
+```
+
+Once this is done, execute the commands below.:
+
+Note: Docker, Docker Compose, Python 3.9, Python-pip and Django must be installed.
+
+```shell
+pip install -r django_postgresql/requirements.txt
+
+docker-compose -f django_postgresql/postgres_compose.yaml up
+
+cd django_postgresql
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
+Afterwards, you can access the addresses 'localhost:8000' and 'localhost:8000/admin'.
+
+Note: To access the '/admin', it will be necessary to pass the username and password of the 'superuser' created previously.
