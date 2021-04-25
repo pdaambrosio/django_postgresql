@@ -76,7 +76,7 @@ Note: Docker, Docker Compose, Python 3.9, Python-pip and Django must be installe
 ```shell
 pip install -r django_postgresql/requirements.txt
 
-docker-compose -f django_postgresql/postgres_compose.yaml up
+docker-compose -f django_postgresql/postgres_compose.yaml up -d
 
 cd django_postgresql
 
